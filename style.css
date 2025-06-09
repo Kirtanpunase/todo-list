@@ -1,0 +1,450 @@
+@import url('https://fonts.googleapis.com/css2?family=Mr+Dafoe&family=Outfit:wght@100..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+   background:#051B24;
+    padding: 40px 20px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+    
+.container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    background: #E8F3F9;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+.todo-title h1 {
+    color: #1a1a1a;
+    text-align: center;
+}
+
+.input-section {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    transition: border-color 0.3s;
+    outline: none;
+}
+
+
+button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #45a049;
+}
+.add-btn{
+    margin-right: 4px;
+    background: #4CAF50;
+    border-radius: 8px;
+    padding: 8px 20px;
+}
+.sort-section {
+   display: flex;
+   justify-content: right;
+}
+
+.sort-button {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+.sort-button:hover {
+    background: #eee;
+}
+
+.todo-section {
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.section-header {
+    background: #f8f9fa;
+    padding: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+.section-header-row{
+    display: flex; 
+    align-items: center; 
+    gap: 10px;
+}
+
+.section-header h2 {
+    font-size: 18px;
+    color: #333;
+}
+
+.section-header .count {
+    background: #e0e0e0;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+.section-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease-out;
+}
+
+.section-content.expanded {
+    overflow: auto;
+    max-height: 1000px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: #f8f9fa;
+    margin: 8px;
+    border-radius: 8px;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.todo-text {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+    color: #666;
+}
+
+.delete-btn {
+    background: none;
+    color: #8a2727;
+    padding: 12px;
+    border-radius: 100%;
+}
+
+.delete-btn:hover {
+    background: #eee;
+}
+
+.chevron {
+    transition: transform 0.3s ease;
+    font-size: 20px;
+}
+
+.section-header.active .chevron {
+    transform: rotate(180deg);
+}
+.checkbox{
+    appearance: none;
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #666;
+    border-radius: 100%;
+    display: grid;
+    place-content: center;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.checkbox::before{
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 -2 24 24' style='fill: rgba(255, 255, 255, 1);transform: ;msFilter:;'%3E%3Cpath d='m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z'%3E%3C/path%3E%3C/svg%3E");
+    transform: scale(0);
+}
+.checkbox:checked{
+    background-color: #8d51e8;
+    border-color: #8d51e8;
+}
+.checkbox:checked::before{
+    transform: scale(1);
+}
+
+/* Toggle Switch */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    background-color: #ccc;
+    border-radius: 34px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+/* 🌌 Final Polished Dark Mode */
+
+body.dark-mode {
+    background-color: #0f0f0f;
+    color: #f1f1f1;
+}
+
+body.dark-mode .container {
+    background-color: #1a1a1a;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
+    border: 1px solid #2e2e2e;
+}
+
+body.dark-mode .todo-title h1 {
+    color: #ffffff;
+}
+
+body.dark-mode input[type="date"] {
+    background-color: #2c2c2c;
+    color: #f5f5f5;
+    border-left: 1px solid #555;
+}
+
+body.dark-mode input[type="text"] {
+    border-radius: 10px 0 0 10px;
+}
+
+body.dark-mode input[type="date"] {
+    border-radius: 0 10px 10px 0;
+}
+
+
+/* Input Section */
+body.dark-mode .input-section {
+    background-color: #222;
+    border: 1px solid #444;
+}
+
+body.dark-mode input[type="text"] {
+    background-color: #1e1e1e;
+    color: #eee;
+    border: none;
+}
+
+body.dark-mode input[type="text"]::placeholder {
+    color: #888;
+}
+
+body.dark-mode .due-date {
+    background-color: #333;
+    color: #ccc;
+}
+
+body.dark-mode .overdue {
+    background-color: #4a1a1a;
+    color: #ff6b6b;
+    border: 1px solid #a94442;
+}
+
+
+/* Buttons */
+body.dark-mode .add-btn {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+body.dark-mode .add-btn:hover {
+    background-color: #66bb6a;
+}
+
+body.dark-mode .sort-button {
+    background-color: #292929;
+    color: #e0e0e0;
+    border: 1px solid #444;
+}
+
+body.dark-mode .sort-button:hover {
+    background-color: #333;
+}
+
+/* Todo Items */
+body.dark-mode .todo-section,
+body.dark-mode .section-header {
+    background-color: #222;
+    border-color: #333;
+}
+
+body.dark-mode .todo-item {
+    background-color: #2b2b2b;
+    color: #fff;
+}
+
+body.dark-mode .todo-item.completed .todo-text {
+    color: #999;
+    text-decoration: line-through;
+}
+
+body.dark-mode .delete-btn {
+    color: #ff6464;
+}
+
+body.dark-mode .delete-btn:hover {
+    background-color: #3a3a3a;
+}
+
+/* Header Counts */
+body.dark-mode .section-header h2,
+body.dark-mode .section-header .count {
+    color: #ccc;
+}
+
+body.dark-mode .section-header .count {
+    background-color: #3a3a3a;
+}
+
+/* Checkboxes */
+body.dark-mode .checkbox {
+    border-color: #aaa;
+}
+
+body.dark-mode .checkbox:checked {
+    background-color: #8d51e8;
+    border-color: #8d51e8;
+}
+
+body.dark-mode .checkbox:checked::before {
+    filter: brightness(1.5);
+}
+
+.edit-input {
+    flex: 1;
+    padding: 6px;
+    margin-right: 10px;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+    font-size: 14px;
+}
+
+.edit-btn, .save-btn {
+    background: none;
+    color: #007bff;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: 6px;
+}
+
+.edit-btn:hover, .save-btn:hover {
+    color: #0056b3;
+}
+
+.due-date {
+    display: inline-block;
+    font-size: 12px;
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-top: 6px;
+    margin-left: 6px;
+    font-weight: 500;
+}
+
+.overdue {
+    background-color: #ffdddd;
+    color: #d32f2f;
+    border: 1px solid #ff7a7a;
+}
+
+/* Style for the due date input */
+input[type="date"] {
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-left: 1px solid #ccc;
+    border-radius: 0 10px 10px 0;
+    background-color: #fff;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+/* Optional: round both inputs together */
+.input-section input[type="text"] {
+    border-radius: 10px 0 0 10px;
+}
+
+
+
+
