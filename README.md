@@ -1,11 +1,15 @@
-# 📝 Todo List Web App
+📋 To-Do List Web App
+A responsive and interactive To-Do List web application built using HTML, CSS, and JavaScript. This app allows users to manage daily tasks efficiently with modern UI and local storage for persistent task data.
 
-A responsive Todo List Web App for managing tasks with features like add, delete, mark as complete, and sort by date. Built using **HTML, CSS, and JavaScript**, this app provides a clean UI and smooth interactions for organizing daily tasks.
+🔥 Features
+✅ Add, edit, complete, and delete tasks
 
-## 🚀 Features
+📅 Assign due dates and highlight overdue tasks
 
-- ✅ Add, complete, and delete tasks
-- 🔄 Sort tasks by newest or oldest
-- 📂 Collapsible sections for uncompleted and completed tasks
-- 💾 Data persistence with localStorage
-- 🎨 Modern, responsive, and minimal UI
+🌗 Toggle between Dark Mode and Light Mode
+
+🔃 Sort tasks by Latest or Oldest
+
+📦 Tasks are stored in LocalStorage — no backend required
+
+🖱️ Smooth animations and responsive design for all screen sizes
